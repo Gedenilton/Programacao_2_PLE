@@ -89,4 +89,7 @@ public class OrdemServico {
 	public List<Peca> getPecas() {
 		return pecas;
 	}
+	public void setPecas(Peca peca) {
+		pecas.add(peca);
+	}
 }

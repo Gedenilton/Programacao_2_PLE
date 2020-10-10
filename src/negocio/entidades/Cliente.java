@@ -1,10 +1,15 @@
 package negocio.entidades;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente extends Pessoa {
 	
 	private String telefone;
 	private String endereco;
 	private String emai;
+	
+	private List<OrdemServico> ordemServico = new ArrayList<OrdemServico>();
 	
 	public Cliente(){
 	}
@@ -39,5 +44,14 @@ public class Cliente extends Pessoa {
 	public void setEmai(String emai) {
 		this.emai = emai;
 	}
+
+	public List<OrdemServico> getOrdemServico() {
+		return ordemServico;
+	}
+
+	public void setOrdemServico(List<OrdemServico> ordemServico) {
+		ordemServico.add((OrdemServico) ordemServico);
+	}
+	
 	
 }
