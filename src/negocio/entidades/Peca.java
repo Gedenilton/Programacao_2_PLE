@@ -1,4 +1,4 @@
-package entidades;
+package negocio.entidades;
 
 public class Peca {
 

@@ -1,10 +1,10 @@
-package entidades;
+package negocio.entidades;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import entidades.enums.StatusServico;
+import negocio.entidades.enums.StatusServico;
 
 public class OrdemServico {
 

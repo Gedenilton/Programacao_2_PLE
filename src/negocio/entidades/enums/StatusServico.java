@@ -1,4 +1,4 @@
-package entidades.enums;
+package negocio.entidades.enums;
 
 public enum StatusServico {
 	
