@@ -63,5 +63,11 @@ public abstract class Pessoa {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Pessoa [nome=" + nome + ", rg=" + rg + ", cpf=" + cpf + "]";
+	}
+	
 	
 }

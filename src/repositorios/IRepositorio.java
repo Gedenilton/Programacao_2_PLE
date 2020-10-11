@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface IRepositorio <T> {
 	
-	public T localizar();
+	public T localizar(String id);
 	public List<T> localizarTodos();
-	public void inserir();
-	public void deletar();
-	public void atualizar();
+	public boolean inserir(T obj);
+	public boolean deletar(String id);
+	public boolean atualizar(String id, T obj);
 
 }
