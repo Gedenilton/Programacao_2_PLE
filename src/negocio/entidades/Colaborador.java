@@ -19,5 +19,10 @@ public class Colaborador extends Pessoa {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Colaborador {"
+				+ "Matricula='" + matricula + '\'' + " Nome="  + super.getNome() + ", RG= " + super.getRg() + ", CPF= " + super.getCpf() + "} " ;
+	};
 }
