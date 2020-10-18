@@ -48,6 +48,16 @@ public class ColaboradorrController implements Initializable {
         comboBoxPecas.getSelectionModel().getSelectedItem().toString();
     }
     
+    /*
+     * Peças
+     * */
+    @FXML
+    void ProsseguirPecas(ActionEvent e) {
+    	System.out.println("Testando no console!");
+    	JavaFXApplication.MudarTela("Listar peças");
+    	
+    }
+    
     @FXML
     void opcoesClientes(ActionEvent event){
         comboBoxPecas.getSelectionModel().getSelectedItem().toString();
@@ -55,8 +65,8 @@ public class ColaboradorrController implements Initializable {
     
     @FXML
     void opcoesServicoss(ActionEvent event){
-        String x = comboBoxPecas.getSelectionModel().getSelectedItem().toString();
-        btnPecas.setText(x);
+        comboBoxPecas.getSelectionModel().getSelectedItem().toString();
+        
     }
     
     @Override
@@ -70,7 +80,7 @@ public class ColaboradorrController implements Initializable {
 //    	comboBoxPecas.setItems(listaClientes);
 //    	
 //    	ObservableList<String> listaServicos = FXCollections.observableArrayList(" ",
-//    			"Listar serviÃ§os","Cadastrar serviÃ§os", "Atualizar serviÃ§os", "Excluir serviÃ§os");
+//    			"Listar serviÃ§os","Cadastrar serviços", "Atualizar serviços", "Excluir serviços");
 //    	comboBoxPecas.setItems(listaServicos);
     } 
     

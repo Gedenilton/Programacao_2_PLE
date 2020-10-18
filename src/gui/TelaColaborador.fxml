@@ -56,7 +56,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnPecas" mnemonicParsing="false" prefWidth="100.0" text="Prosseguir" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                  <Button fx:id="btnPecas" mnemonicParsing="false" onAction="#ProsseguirPecas" prefWidth="100.0" text="Prosseguir" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                   <Button fx:id="btnClientes" mnemonicParsing="false" prefWidth="100.0" text="Prosseguir" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                   <Button fx:id="btnServicos" mnemonicParsing="false" prefWidth="100.0" text="Prosseguir" GridPane.rowIndex="5" />
                </children>
