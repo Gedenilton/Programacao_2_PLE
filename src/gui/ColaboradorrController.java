@@ -49,12 +49,12 @@ public class ColaboradorrController implements Initializable {
     }
     
     /*
-     * Peças
+     * Peï¿½as
      * */
     @FXML
     void ProsseguirPecas(ActionEvent e) {
     	System.out.println("Testando no console!");
-    	JavaFXApplication.MudarTela("Listar peças");
+    	JavaFXApplication.MudarTela("Cadastrar peÃ§as");
     	
     }
     
@@ -72,7 +72,7 @@ public class ColaboradorrController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList<String> listaPecas = FXCollections.observableArrayList(" ",
-        		"Listar peças", "Cadastrar peças", "Atualizar peças", "Excluir peças");
+        		"Listar peï¿½as", "Cadastrar peÃ§as", "Atualizar peÃ§as", "Excluir peÃ§as");
         comboBoxPecas.setItems(listaPecas);
         
 //        ObservableList<String> listaClientes = FXCollections.observableArrayList(" ",
@@ -80,7 +80,7 @@ public class ColaboradorrController implements Initializable {
 //    	comboBoxPecas.setItems(listaClientes);
 //    	
 //    	ObservableList<String> listaServicos = FXCollections.observableArrayList(" ",
-//    			"Listar serviÃ§os","Cadastrar serviços", "Atualizar serviços", "Excluir serviços");
+//    			"Listar serviÃ§os","Cadastrar serviï¿½os", "Atualizar serviï¿½os", "Excluir serviï¿½os");
 //    	comboBoxPecas.setItems(listaServicos);
     } 
     

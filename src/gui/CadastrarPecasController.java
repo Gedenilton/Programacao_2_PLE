@@ -20,8 +20,8 @@ public class CadastrarPecasController implements Initializable {
 	@FXML // fx:id="TextFieldDescricaoPeca"
 	private TextField TextFieldDescricaoPeca;
 
-	@FXML // fx:id="TextFieldPreçoPeca"
-	private TextField TextFieldPreçoPeca;
+	@FXML // fx:id="TextFieldPreï¿½oPeca"
+	private TextField TextFieldPreï¿½oPeca;
 
 	@FXML // fx:id="TextFieldQtdEstoquePeca"
 	private TextField TextFieldQtdEstoquePeca;
@@ -38,7 +38,7 @@ public class CadastrarPecasController implements Initializable {
 	}
 	
 	/*
-	 * Ao apertar o botão cancelar o codigo deve voltar para a TelaColaborador
+	 * Ao apertar o botï¿½o cancelar o codigo deve voltar para a TelaColaborador
 	 * falta consertar essa funcionalidade
 	 * */
 	@FXML
