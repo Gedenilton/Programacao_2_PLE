@@ -48,7 +48,7 @@ public class ColaboradorrController implements Initializable {
 	 */
 	@FXML
 	void ProsseguirPecas(ActionEvent e) {
-		System.out.println("Testando no console!");
+		System.out.println("Botão funcionando!");
 		JavaFXApplication.MudarTela("Cadastrar pecas");
 
 	}
@@ -63,7 +63,7 @@ public class ColaboradorrController implements Initializable {
 		comboBoxServicos.getSelectionModel().getSelectedItem().toString();
 
 	}
-
+//Exibir os combobox com conteúdo.
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		ObservableList<String> listaPecas = FXCollections.observableArrayList(" ", "Listar pecas", "Cadastrar pecas",

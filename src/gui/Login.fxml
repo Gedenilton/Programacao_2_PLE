@@ -18,7 +18,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AtualizarPecasController">
    <children>
-      <Pane layoutX="-3.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3c3c3c;">
+      <Pane layoutX="-3.0" prefHeight="400.0"  prefWidth="600.0" style="-fx-background-color: #3c3c3c;">
          <children>
             <GridPane layoutY="80.0" prefHeight="270.0" prefWidth="600.0">
                <columnConstraints>
