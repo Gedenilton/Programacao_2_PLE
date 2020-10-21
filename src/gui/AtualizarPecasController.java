@@ -21,7 +21,7 @@ public class AtualizarPecasController implements Initializable {
 	private TextField TextFieldDescricaoPeca;
 
 	@FXML // fx:id="TextFieldPre�oPeca"
-	private TextField TextFieldPre�oPeca;
+	private TextField TextFieldPrecoPeca;
 
 	@FXML // fx:id="TextFieldQtdEstoquePeca"
 	private TextField TextFieldQtdEstoquePeca;

@@ -56,18 +56,18 @@ public class JavaFXApplication extends Application {
 	
 	public static void MudarTela(String opcoes) {
 		switch(opcoes) {
-		case "Listar pe�as":
+		case "Listar pecas":
 			palco.setScene(telaListarPecas);
 			break;
 			
-		case "Cadastrar pe�as":
+		case "Cadastrar pecas":
 			palco.setScene(telaCadastrarPecas);
 			break;
 		
-		case "Atualizar pe�as":
+		case "Atualizar pecas":
 			palco.setScene(telaListarPecas);
 			break;
-		case "Excluir pe�as":
+		case "Excluir pecas":
 			palco.setScene(telaListarPecas);
 			break;
 		case " ":
