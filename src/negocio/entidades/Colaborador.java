@@ -3,6 +3,7 @@ package negocio.entidades;
 public class Colaborador extends Pessoa {
 	
 	private String matricula;
+	private String login;
 
 	public Colaborador(){
 	}
@@ -24,5 +25,13 @@ public class Colaborador extends Pessoa {
 	public String toString() {
 		return "Colaborador {"
 				+ "Matricula='" + matricula + '\'' + " Nome="  + super.getNome() + ", RG= " + super.getRg() + ", CPF= " + super.getCpf() + "} " ;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
 	};
 }
