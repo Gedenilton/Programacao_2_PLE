@@ -92,4 +92,7 @@ public class OrdemServico {
 	public void setPecas(Peca peca) {
 		pecas.add(peca);
 	}
+	public void setListPecas(List<Peca> list) {
+		pecas.addAll(list);
+	}
 }
