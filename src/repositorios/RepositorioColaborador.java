@@ -14,8 +14,9 @@ public class RepositorioColaborador implements IRepositorio<Colaborador> {
 	public Colaborador localizar(String cpf) {
 		Colaborador obj = null;
 		for (Colaborador colaborador : colaboradores) {
-			if (colaborador.getCpf() == cpf) {
+			if (colaborador.getCpf().equals(cpf)) {
 				obj = colaborador;
+				break;
 			}
 		}
 		return obj;
@@ -35,7 +36,7 @@ public class RepositorioColaborador implements IRepositorio<Colaborador> {
 	@Override
 	public boolean deletar(String cpf) {
 		for (Colaborador colaborador : colaboradores) {
-			if (colaborador.getCpf() == cpf) {
+			if (colaborador.getCpf().equals(cpf)) {
 				colaboradores.remove(colaborador);
 				return true;
 			}
@@ -46,7 +47,7 @@ public class RepositorioColaborador implements IRepositorio<Colaborador> {
 	@Override
 	public boolean atualizar(String cpf, Colaborador colaborador) {
 		for (Colaborador aux : colaboradores) {
-			if (aux.getCpf() == cpf) {
+			if (aux.getCpf().equals(cpf)) {
 				updateColaborador(aux, colaborador);
 				return true;
 			}

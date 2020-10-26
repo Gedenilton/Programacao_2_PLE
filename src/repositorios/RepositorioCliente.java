@@ -13,8 +13,9 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 	public Cliente localizar(String cpf) {
 		Cliente obj = null;
 		for (Cliente cliente : clientes) {
-			if (cliente.getCpf() == cpf) {
+			if (cliente.getCpf().equals(cpf)) {
 				obj = cliente;
+				break;
 			}
 		}
 		return obj;

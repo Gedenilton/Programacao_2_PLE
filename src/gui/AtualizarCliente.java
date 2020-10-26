@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,11 +13,19 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import negocio.entidades.Cliente;
-import negocio.entidades.Colaborador;
 import negocio.entidades.ControladorCliente;
-import negocio.entidades.ControladorColaborador;
+import negocio.entidades.ControladorPeca;
+import negocio.entidades.Peca;
+import repositorios.RepositorioCliente;
 
-public class ListarCliente extends JDialog {
+import javax.swing.JComboBox;
+import javax.swing.JList;
+import java.awt.Font;
+import javax.swing.JTextPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class AtualizarCliente extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtNome;
@@ -34,7 +41,7 @@ public class ListarCliente extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			ListarCliente dialog = new ListarCliente();
+			AtualizarCliente dialog = new AtualizarCliente();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -45,7 +52,7 @@ public class ListarCliente extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ListarCliente() {
+	public AtualizarCliente() {
 		setModal(true);
 		setBounds(100, 100, 729, 392);
 		getContentPane().setLayout(null);
@@ -133,24 +140,31 @@ public class ListarCliente extends JDialog {
 			contentPanel.add(btnPesquisar);
 			btnPesquisar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Cliente cliente= ControladorCliente.getInstancia().localizar(txtPesquisarCPF.getText());
-					if ( cliente != null ) {
-						txtNome.setText( cliente.getNome());
-						txtCPF.setText(cliente.getCpf());
-						txtRG.setText(cliente.getRg());
-						txtEndereco.setText(cliente.getEndereco());
-						txtTelefone.setText(cliente.getTelefone());
-						txtEmail.setText(cliente.getEmail());
-						
-					} else {
-						JOptionPane.showMessageDialog(null, "Cliente com CPF "+txtCPF.getText()+  " não localizado.");
+					
+					Cliente cliente = ControladorCliente.getInstancia().localizar(txtPesquisarCPF.getText());
+					txtRG.setText(cliente.getRg());
+					txtCPF.setText(cliente.getCpf());
+					txtTelefone.setText(cliente.getTelefone());
+					txtEndereco.setText(cliente.getEndereco());
+					txtEmail.setText(cliente.getEmail());
+					txtNome.setText(cliente.getNome());
+				
 					}
-				}
-			});
+							});
 			
 			btnPesquisar.setActionCommand("OK");
 			getRootPane().setDefaultButton(btnPesquisar);
 		}
+		
+		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Cliente cliente = new Cliente();
+				ControladorCliente.getInstancia().atualizar(txtPesquisarCPF.getText(), cliente);
+			}
+		});
+		btnAtualizar.setBounds(307, 278, 89, 23);
+		contentPanel.add(btnAtualizar);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBounds(0, 320, 713, 33);
@@ -161,10 +175,13 @@ public class ListarCliente extends JDialog {
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						dispose();
+						
 					}
+				
 				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
+				
 				
 			}
 		}

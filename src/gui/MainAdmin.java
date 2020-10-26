@@ -81,4 +81,9 @@ public class MainAdmin {
 		btnTelaColaborador.setBounds(433, 157, 223, 78);
 		frame.getContentPane().add(btnTelaColaborador);
 	}
+
+	public void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
 }

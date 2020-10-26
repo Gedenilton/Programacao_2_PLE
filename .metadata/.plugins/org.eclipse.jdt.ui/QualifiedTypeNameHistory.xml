@@ -4,6 +4,10 @@
     <fullyQualifiedTypeName name="negocio.entidades.ControladorCliente"/>
     <fullyQualifiedTypeName name="javax.swing.DefaultListModel"/>
     <fullyQualifiedTypeName name="negocio.entidades.Cliente"/>
-    <fullyQualifiedTypeName name="repositorios.RepositorioCliente"/>
     <fullyQualifiedTypeName name="gui.ListarClientes"/>
+    <fullyQualifiedTypeName name="repositorios.RepositorioCliente"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="negocio.entidades.Colaborador"/>
+    <fullyQualifiedTypeName name="negocio.entidades.ControladorColaborador"/>
+    <fullyQualifiedTypeName name="java.awt.Menu"/>
 </qualifiedTypeNameHistroy>
