@@ -15,7 +15,7 @@ public class Main {
 			public void run() {
 				try {
 					
-					ControladorColaborador.getInstancia().inserir( new Colaborador("Tacinao", "rg", "111", null,"222") );
+					//ControladorColaborador.getInstancia().inserir( new Colaborador("Michelle", "rg", "111", null,"222") );
 					
 					new TelaDeLoginPrincipal();
 					
