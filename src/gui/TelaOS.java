@@ -36,6 +36,7 @@ public class TelaOS extends JDialog {
 	private JTextField txtValorServico;
 	private JTextField txtValorTotal;
 	private JTextField txtAdiantamento;
+	private JTextField txtCPF;
 
 	/**
 	 * Launch the application.
@@ -81,16 +82,7 @@ public class TelaOS extends JDialog {
 		lblDataEntrada.setBounds(20, 42, 132, 14);
 		panel.add(lblDataEntrada);
 		
-		/*MaskFormatter maskData = null;
-		try {
-			maskData = new MaskFormatter("##/##/####");
-			maskData.setPlaceholderCharacter('_');
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
-		fTxtDataEntrada = new JFormattedTextField(maskData);*/
-		//JFormattedTextField TexFieldData = new JFormattedTextField(maskData);
-		
+			
 		
 		
 		
@@ -130,71 +122,85 @@ public class TelaOS extends JDialog {
 		dateChooserSaida.setBounds(162, 70, 166, 20);
 		panel.add(dateChooserSaida);
 		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(0, 92, 713, 20);
+		panel.add(separator);
+		
 		JLabel lblOS = new JLabel("Ordem de Servi\u00E7o");
 		lblOS.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblOS.setBounds(265, 11, 190, 29);
 		contentPanel.add(lblOS);
 		
 		JLabel lblNomeCliente = new JLabel("Nome:");
-		lblNomeCliente.setBounds(18, 196, 80, 14);
+		lblNomeCliente.setBounds(17, 220, 80, 14);
 		contentPanel.add(lblNomeCliente);
 		
 		txtNomeCliente = new JTextField();
 		txtNomeCliente.setColumns(10);
-		txtNomeCliente.setBounds(162, 196, 166, 20);
+		txtNomeCliente.setBounds(161, 220, 166, 20);
 		contentPanel.add(txtNomeCliente);
 		
 		JLabel lblEndereco = new JLabel("Endere\u00E7o:");
-		lblEndereco.setBounds(18, 230, 80, 14);
+		lblEndereco.setBounds(17, 254, 80, 14);
 		contentPanel.add(lblEndereco);
 		
 		JLabel lblEmail = new JLabel("E-mail:");
-		lblEmail.setBounds(18, 258, 80, 14);
+		lblEmail.setBounds(17, 282, 80, 14);
 		contentPanel.add(lblEmail);
 		
 		txtEmailCliente = new JTextField();
 		txtEmailCliente.setColumns(10);
-		txtEmailCliente.setBounds(162, 261, 166, 20);
+		txtEmailCliente.setBounds(161, 285, 166, 20);
 		contentPanel.add(txtEmailCliente);
 		
 		txtEnderecoCliente = new JTextField();
-		txtEnderecoCliente.setBounds(162, 227, 166, 20);
+		txtEnderecoCliente.setBounds(161, 251, 166, 20);
 		contentPanel.add(txtEnderecoCliente);
 		txtEnderecoCliente.setColumns(10);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(0, 185, 713, 20);
-		contentPanel.add(separator);
-		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(0, 300, 713, 20);
+		separator_1.setBounds(0, 319, 713, 20);
 		contentPanel.add(separator_1);
 		
+		JLabel lblCPD = new JLabel("CPF:");
+		lblCPD.setBounds(17, 189, 80, 14);
+		contentPanel.add(lblCPD);
+		
+		txtCPF = new JTextField();
+		txtCPF.setColumns(10);
+		txtCPF.setBounds(161, 189, 166, 20);
+		contentPanel.add(txtCPF);
+		
+		JButton btnBuscarCpf = new JButton("Buscar CPF");
+		btnBuscarCpf.setActionCommand("OK");
+		btnBuscarCpf.setBounds(337, 182, 118, 23);
+		contentPanel.add(btnBuscarCpf);
+		
 		JLabel lblCodPeca = new JLabel("Cod. pe\u00E7a:");
-		lblCodPeca.setBounds(20, 333, 80, 14);
+		lblCodPeca.setBounds(20, 346, 80, 14);
 		getContentPane().add(lblCodPeca);
 		
 		txtCodPeca = new JTextField();
 		txtCodPeca.setColumns(10);
-		txtCodPeca.setBounds(162, 330, 166, 20);
+		txtCodPeca.setBounds(162, 343, 166, 20);
 		getContentPane().add(txtCodPeca);
 		
 		JLabel lblTipoServico = new JLabel("Tipo de servi\u00E7o:");
-		lblTipoServico.setBounds(20, 364, 132, 14);
+		lblTipoServico.setBounds(20, 377, 132, 14);
 		getContentPane().add(lblTipoServico);
 		
 		txtTipoServico = new JTextField();
 		txtTipoServico.setColumns(10);
-		txtTipoServico.setBounds(162, 361, 166, 20);
+		txtTipoServico.setBounds(162, 374, 166, 20);
 		getContentPane().add(txtTipoServico);
 		
 		JLabel lblDescricao = new JLabel("Descricao do servi\u00E7o:");
-		lblDescricao.setBounds(20, 389, 132, 14);
+		lblDescricao.setBounds(20, 405, 132, 14);
 		getContentPane().add(lblDescricao);
 		
 		JTextArea txtArea = new JTextArea();
 		txtArea.setWrapStyleWord(true);
-		txtArea.setBounds(162, 392, 346, 100);
+		txtArea.setBounds(162, 408, 346, 100);
 		getContentPane().add(txtArea);
 		
 		JSeparator separator_1_1 = new JSeparator();
@@ -202,12 +208,12 @@ public class TelaOS extends JDialog {
 		getContentPane().add(separator_1_1);
 		
 		JLabel lblPrecoServico = new JLabel("Valor do Servi\u00E7o:");
-		lblPrecoServico.setBounds(20, 506, 102, 14);
+		lblPrecoServico.setBounds(20, 522, 102, 14);
 		getContentPane().add(lblPrecoServico);
 		
 		txtValorServico = new JTextField();
 		txtValorServico.setColumns(10);
-		txtValorServico.setBounds(162, 503, 166, 20);
+		txtValorServico.setBounds(162, 519, 166, 20);
 		getContentPane().add(txtValorServico);
 		
 		txtValorTotal = new JTextField();

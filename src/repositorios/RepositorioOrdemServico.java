@@ -5,7 +5,7 @@ import java.util.List;
 
 import negocio.entidades.OrdemServico;
 
-public class RepositorioOrdemServio {
+public class RepositorioOrdemServico {
 
 	private List<OrdemServico> repoOS = new ArrayList<OrdemServico>();
 
@@ -20,14 +20,14 @@ public class RepositorioOrdemServio {
 		return null;
 	}
 	
-//	public int gerarIdOS() {
-//		int id = 1;
-//		if(localizarTodos.size() > 0) {
-//			id = localizarTodos.get(localizarTodos.size()-1).getNumOS()+1;
-//		}
-//		
-//		return id;
-//	}
+	public int gerarIdOS() {
+		int id = 1;
+		if(localizarTodos().size() > 0) {
+			id = localizarTodos().get(localizarTodos().size()-1).getNumOS()+1;
+		}
+		
+		return id;
+	}
 
 	// Retorna uma Lista de OS
 	public List<OrdemServico> localizarTodos() {
