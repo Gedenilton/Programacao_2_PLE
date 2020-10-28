@@ -20,12 +20,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
 import negocio.entidades.enums.StatusServico;
+import java.awt.Choice;
+import com.toedter.calendar.JDateChooser;
 
 public class TelaOS extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtCodOS;
-	private JTextField txtDataSaida;
 	private JTextField txtEndereco;
 	private JTextField txtNomeCliente;
 	private JTextField txtEnderecoCliente;
@@ -76,13 +77,9 @@ public class TelaOS extends JDialog {
 		txtCodOS.setColumns(10);
 		
 				
-		JLabel lblDataEntrada = new JLabel("Entrada:");
-		lblDataEntrada.setBounds(20, 42, 80, 14);
+		JLabel lblDataEntrada = new JLabel("Data de entrada:");
+		lblDataEntrada.setBounds(20, 42, 132, 14);
 		panel.add(lblDataEntrada);
-		
-		JFormattedTextField fTxtDataEntrada = new JFormattedTextField();
-		fTxtDataEntrada.setBounds(162, 36, 166, 20);
-		panel.add(fTxtDataEntrada);
 		
 		/*MaskFormatter maskData = null;
 		try {
@@ -97,14 +94,9 @@ public class TelaOS extends JDialog {
 		
 		
 		
-		JLabel lblDataSaida = new JLabel("Saida:");
-		lblDataSaida.setBounds(20, 76, 80, 14);
+		JLabel lblDataSaida = new JLabel("Data de saida:");
+		lblDataSaida.setBounds(20, 76, 135, 14);
 		panel.add(lblDataSaida);
-		
-		txtDataSaida = new JTextField();
-		txtDataSaida.setBounds(162, 70, 166, 20);
-		panel.add(txtDataSaida);
-		txtDataSaida.setColumns(10);
 		
 		
 		JLabel lblColaborador = new JLabel("Colaborador:");
@@ -129,6 +121,14 @@ public class TelaOS extends JDialog {
 		JLabel lblStatus = new JLabel("Status:");
 		lblStatus.setBounds(409, 42, 70, 14);
 		panel.add(lblStatus);
+		
+		JDateChooser dateChooserEntrada = new JDateChooser();
+		dateChooserEntrada.setBounds(162, 36, 166, 20);
+		panel.add(dateChooserEntrada);
+		
+		JDateChooser dateChooserSaida = new JDateChooser();
+		dateChooserSaida.setBounds(162, 70, 166, 20);
+		panel.add(dateChooserSaida);
 		
 		JLabel lblOS = new JLabel("Ordem de Servi\u00E7o");
 		lblOS.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -180,7 +180,7 @@ public class TelaOS extends JDialog {
 		getContentPane().add(txtCodPeca);
 		
 		JLabel lblTipoServico = new JLabel("Tipo de servi\u00E7o:");
-		lblTipoServico.setBounds(20, 364, 80, 14);
+		lblTipoServico.setBounds(20, 364, 132, 14);
 		getContentPane().add(lblTipoServico);
 		
 		txtTipoServico = new JTextField();

@@ -15,9 +15,19 @@ public class RepositorioOrdemServio {
 			if (os.getNumOS() == numOS) {
 				return os;
 			}
+		
 		}
 		return null;
 	}
+	
+//	public int gerarIdOS() {
+//		int id = 1;
+//		if(localizarTodos.size() > 0) {
+//			id = localizarTodos.get(localizarTodos.size()-1).getNumOS()+1;
+//		}
+//		
+//		return id;
+//	}
 
 	// Retorna uma Lista de OS
 	public List<OrdemServico> localizarTodos() {
