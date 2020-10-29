@@ -4,24 +4,23 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.MaskFormatter;
 
-import negocio.entidades.enums.StatusServico;
-import java.awt.Choice;
 import com.toedter.calendar.JDateChooser;
+
+import negocio.ControladorCliente;
+import negocio.entidades.Cliente;
+import negocio.entidades.enums.StatusServico;
 
 public class TelaOS extends JDialog {
 
@@ -175,6 +174,21 @@ public class TelaOS extends JDialog {
 		btnBuscarCpf.setActionCommand("OK");
 		btnBuscarCpf.setBounds(337, 182, 118, 23);
 		contentPanel.add(btnBuscarCpf);
+		
+		btnBuscarCpf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+
+				Cliente cliente = ControladorCliente.getInstancia().localizar(txtCPF.getText());
+				txtEnderecoCliente.setText(cliente.getEndereco());
+				txtEmailCliente.setText(cliente.getEmail());
+				txtNomeCliente.setText(cliente.getNome());
+			
+				}
+				
+				
+			}
+		);
 		
 		JLabel lblCodPeca = new JLabel("Cod. pe\u00E7a:");
 		lblCodPeca.setBounds(20, 346, 80, 14);
