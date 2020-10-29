@@ -1,2 +1,0 @@
-INDEX VERSION 1.131+C:\Users\michelle.souza.silva\Desktop\UFRPE\Programacao_2_PLE\.metadata\.plugins\org.eclipse.jdt.core
-1282819182.index

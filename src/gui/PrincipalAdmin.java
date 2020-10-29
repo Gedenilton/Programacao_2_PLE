@@ -75,11 +75,15 @@ public class PrincipalAdmin {
 		panel.add(btnEmitirOS);
 		btnEmitirOS.setForeground(Color.BLACK);
 		btnEmitirOS.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) {//Mudar para tela da ordem de servico
+				TelaOS telaOS = new TelaOS();
+				telaOS.setVisible(true); ;
 			}
 		});
 		btnEmitirOS.setBackground(Color.RED);
 		btnEmitirOS.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		
 		btnCadastroPeca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				CadastroPeca manutencaoPeca= new CadastroPeca();
@@ -87,6 +91,8 @@ public class PrincipalAdmin {
 				
 			}
 		});
+		
+		
 		btnCadastroClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				CadastroCliente cadCliente = new CadastroCliente();
@@ -97,6 +103,12 @@ public class PrincipalAdmin {
 			public void actionPerformed(ActionEvent arg0) {
 				CadastroColaborador telaColab = new CadastroColaborador();
 				telaColab.setVisible(true);
+			}
+		});
+		btnCadastroClientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CadastroCliente cadCliente = new CadastroCliente();
+				cadCliente.setVisible(true);
 			}
 		});
 		

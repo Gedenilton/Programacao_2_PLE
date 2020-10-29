@@ -13,9 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import negocio.entidades.Colaborador;
-import negocio.entidades.ControladorColaborador;
-import negocio.entidades.ControladorPeca;
-import negocio.entidades.ControladorPeca;
+import negocio.ControladorColaborador;
+import negocio.ControladorPeca;
+import negocio.ControladorPeca;
 import negocio.entidades.Peca;
 import javax.swing.JComboBox;
 import javax.swing.JList;

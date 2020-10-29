@@ -1,8 +1,9 @@
-package negocio.entidades;
+package negocio;
 
 import java.util.List;
 import java.util.Random;
 
+import negocio.entidades.Colaborador;
 import repositorios.RepositorioColaborador;
 
 public class ControladorColaborador {

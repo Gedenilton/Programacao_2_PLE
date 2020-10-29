@@ -12,7 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import negocio.entidades.Colaborador;
-import negocio.entidades.ControladorColaborador;
+import negocio.ControladorColaborador;
 
 public class TelaDeLoginPrincipal {
 
@@ -57,11 +57,12 @@ public class TelaDeLoginPrincipal {
 				if ( ControladorColaborador.getInstancia().usuarioLogado(colaborador) ) {
 					new TelaDeLoginPrincipal();
 					frame.setVisible(false);
+					Principal menu = new Principal();
+					menu.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, "Senha ou login invalido");
 				}
-				Principal menu = new Principal();
-				menu.setVisible(true);
+				
 			
 		}}});
 		btnLogin.setBounds(167, 220, 89, 23);

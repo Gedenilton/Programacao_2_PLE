@@ -14,9 +14,9 @@ import javax.swing.border.EmptyBorder;
 
 import negocio.entidades.Cliente;
 import negocio.entidades.Cliente;
-import negocio.entidades.ControladorCliente;
-import negocio.entidades.ControladorCliente;
-import negocio.entidades.ControladorPeca;
+import negocio.ControladorCliente;
+import negocio.ControladorCliente;
+import negocio.ControladorPeca;
 import negocio.entidades.Peca;
 import javax.swing.JComboBox;
 import javax.swing.JList;
@@ -133,7 +133,7 @@ public class CadastroCliente extends JDialog {
 		contentPanel.add(lblNewLabel_1);
 		
 		txtPesquisarCPF = new JTextField();
-		txtPesquisarCPF.setText("Digite o CPF");
+		txtPesquisarCPF.setToolTipText("Digite o CPF");
 		txtPesquisarCPF.setColumns(10);
 		txtPesquisarCPF.setBounds(221, 51, 279, 29);
 		contentPanel.add(txtPesquisarCPF);

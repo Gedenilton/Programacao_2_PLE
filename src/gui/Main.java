@@ -3,7 +3,7 @@ package gui;
 import java.awt.EventQueue;
 
 import negocio.entidades.Colaborador;
-import negocio.entidades.ControladorColaborador;
+import negocio.ControladorColaborador;
 
 public class Main {
 
@@ -24,6 +24,11 @@ public class Main {
 				}
 			}
 		});
+	}
+
+	public Main setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

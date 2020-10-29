@@ -1,8 +1,9 @@
-package negocio.entidades;
+package negocio;
 
 import java.util.List;
 import java.util.Objects;
 
+import negocio.entidades.Peca;
 import repositorios.RepositorioPeca;
 
 public class ControladorPeca {
