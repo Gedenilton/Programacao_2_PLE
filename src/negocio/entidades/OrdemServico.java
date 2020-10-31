@@ -15,6 +15,8 @@ public class OrdemServico {
 	private Colaborador colaborador;
 	private Cliente cliente;
 	private Servico servico;
+	private double valorTotal;
+	private double valorAdiantado;
 
 	private List<Peca> pecas = new ArrayList<Peca>();
 	
@@ -105,5 +107,29 @@ public class OrdemServico {
 	public void setMatricula(String text) {
 		// TODO Aretur
 		
+	}
+
+	public double getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(double valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
+	public double getValorAdiantado() {
+		return valorAdiantado;
+	}
+
+	public void setValorAdiantado(double valorAdiantado) {
+		this.valorAdiantado = valorAdiantado;
+	}
+	
+	public double diferenca() {
+		double diferenca = 0;
+		
+		diferenca = getValorTotal() - getValorAdiantado();
+		
+		return diferenca;
 	}
 }

@@ -1,10 +1,5 @@
 package negocio;
 
-import java.util.List;
-import java.util.Random;
-
-import negocio.entidades.Cliente;
-import negocio.entidades.Colaborador;
 import negocio.entidades.OrdemServico;
 import repositorios.RepositorioOrdemServico;
 
@@ -26,6 +21,10 @@ public class ControladorOrdemServico {
 	public boolean inserir(OrdemServico ordemServico) {
     	return reOS.inserir(ordemServico);
     }
+	
+	public int gerarID() {
+		return reOS.gerarIdOS();
+	}
 		
 	
 }

@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 import com.toedter.calendar.JDateChooser;
 
 import negocio.ControladorCliente;
+import negocio.ControladorColaborador;
 import negocio.ControladorOrdemServico;
 import negocio.entidades.Cliente;
 import negocio.entidades.Colaborador;
@@ -31,7 +32,6 @@ import negocio.entidades.enums.StatusServico;
 public class TelaOS extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField txtCodOS;
 	private JTextField txtColaborador;
 	private JTextField txtCodPeca;
 	private JTextField txtTipoServico;
@@ -41,9 +41,12 @@ public class TelaOS extends JDialog {
 	private JTextField txtCPF;
 
 	private static Cliente cliente;
+	public static Colaborador colaborador;
 
 	JDateChooser dataEntrada;
 	JDateChooser dataSaida;
+	
+	JLabel lblcodOrdemServico;
 
 	/**
 	 * Launch the application.
@@ -76,13 +79,10 @@ public class TelaOS extends JDialog {
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		JLabel lblCodOS = new JLabel("Cod. Ordem de Servi\u00E7o:");
-		lblCodOS.setBounds(20, 11, 135, 14);
+		lblCodOS.setBounds(162, 8, 135, 14);
 		panel.add(lblCodOS);
-
-		txtCodOS = new JTextField();
-		txtCodOS.setBounds(162, 5, 166, 20);
-		panel.add(txtCodOS);
-		txtCodOS.setColumns(10);
+		String id = ControladorOrdemServico.getInstancia().gerarID()+"";
+		lblCodOS.setText(id);
 
 		JLabel lblDataEntrada = new JLabel("Data de entrada:");
 		lblDataEntrada.setBounds(20, 42, 132, 14);
@@ -93,24 +93,24 @@ public class TelaOS extends JDialog {
 		panel.add(lblDataSaida);
 
 		JLabel lblColaborador = new JLabel("Colaborador:");
-		lblColaborador.setBounds(409, 11, 79, 14);
+		lblColaborador.setBounds(368, 8, 79, 14);
 		panel.add(lblColaborador);
 
 		txtColaborador = new JTextField();
 		txtColaborador.setColumns(10);
-		txtColaborador.setBounds(498, 8, 166, 20);
+		txtColaborador.setBounds(447, 5, 166, 20);
 		panel.add(txtColaborador);
 
 		/*
 		 * Combobox Status
 		 */
 		JComboBox comboBoxStatus = new JComboBox();
-		comboBoxStatus.setBounds(498, 34, 166, 22);
+		comboBoxStatus.setBounds(447, 59, 166, 22);
 		panel.add(comboBoxStatus);
 		comboBoxStatus.setModel(new DefaultComboBoxModel<>(StatusServico.values()));
 
 		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setBounds(409, 42, 70, 14);
+		lblStatus.setBounds(368, 67, 70, 14);
 		panel.add(lblStatus);
 
 		dataEntrada = new JDateChooser();
@@ -124,6 +124,31 @@ public class TelaOS extends JDialog {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(0, 92, 713, 20);
 		panel.add(separator);
+		
+		
+		//pegando a matricula do colaborador no repositorio
+		JButton btnBuscarColaborador = new JButton("Buscar");
+		btnBuscarColaborador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				colaborador = ControladorColaborador.getInstancia().localizar(txtColaborador.getText());
+				lblColaborador.setText(colaborador.getMatricula());
+			}
+		});
+		btnBuscarColaborador.setActionCommand("OK");
+		btnBuscarColaborador.setBounds(623, 4, 79, 23);
+		panel.add(btnBuscarColaborador);
+		
+		JLabel lblmatricula = new JLabel("[Matricula]");
+		lblmatricula.setBounds(447, 34, 166, 14);
+		panel.add(lblmatricula);
+		
+		JLabel lblMatricula_1 = new JLabel("Matricula:");
+		lblMatricula_1.setBounds(368, 34, 70, 14);
+		panel.add(lblMatricula_1);
+		
+		lblcodOrdemServico = new JLabel("Cod. Ordem de Servico:");
+		lblcodOrdemServico.setBounds(20, 8, 135, 14);
+		panel.add(lblcodOrdemServico);
 
 		JLabel lblOS = new JLabel("Ordem de Servi\u00E7o");
 		lblOS.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -157,7 +182,7 @@ public class TelaOS extends JDialog {
 
 		JButton btnBuscarCpf = new JButton("Buscar CPF");
 		btnBuscarCpf.setActionCommand("OK");
-		btnBuscarCpf.setBounds(337, 182, 118, 23);
+		btnBuscarCpf.setBounds(337, 185, 118, 23);
 		contentPanel.add(btnBuscarCpf);
 
 		JLabel lblResultNome = new JLabel("[Nome do cliente]");
@@ -262,57 +287,76 @@ public class TelaOS extends JDialog {
 						Servico servico = new Servico();
 						servico.setTipoServico(txtTipoServico.getText());
 						servico.setDescricaoServico(txtAreaServico.getText());
+						servico.setPreco(Double.parseDouble(txtValorServico.getText()));
 						
-						OrdemServico ordemServico = new OrdemServico();
-						//ordemServico.setStatusServico(comboBoxStatus.getItemListeners();
-						OrdemServico status = new OrdemServico();
-						status.setStatusServico(comboBoxStatus.getSelectedIndex());
 						
-
 						OrdemServico ordemS = new OrdemServico();
-						ordemS.setCliente(cliente);
-						ordemS.setColaborador(colaborador);
-						ordemS.setDataEntrada(dataEntrada.getDate());
-						ordemS.setDataEntrada(dataSaida.getDate());
-						ordemS.setMatricula(txtColaborador.getText());
 						
-
+						
+						
+						ordemS.setNumOS(Integer.parseInt(lblCodOS.getText()));
+						
+						ordemS.setDataEntrada(dataEntrada.getDate());
+						ordemS.setDataSaida(dataSaida.getDate());
+						ordemS.setColaborador(colaborador);
+						ordemS.setStatusServico(comboBoxStatus.getSelectedIndex());
+						
+						ordemS.setCliente(cliente);
+						ordemS.setPecas(peca);
+						ordemS.setServico(servico);
+						
+						ordemS.setValorTotal(Double.parseDouble(txtValorTotal.getText()));
+						ordemS.setValorAdiantado(Double.parseDouble(txtAdiantamento.getText()));
+						
+						
 						// Verifica se os campos existe vazio, se existir emite um alerta
 						if (cliente == null || dataEntrada.getDate() == null || dataSaida.getDate() == null
 								|| txtColaborador.getText() == null || "".equals(txtColaborador.getText())
 								|| txtCPF.getText() == null || "".equals(txtCPF.getText())
 								|| txtCodPeca.getText() == null || "".equals(txtTipoServico.getText())
 								|| "".equals(txtAreaServico.getText()) || "".equals(txtValorTotal.getText())
-								|| "".equals(txtAdiantamento.getText())) {// arrumar
+								|| "".equals(txtAdiantamento.getText())) {
 
 							JOptionPane.showMessageDialog(null, "Prencha todos os campos");
 						} else {
 							if (ControladorOrdemServico.getInstancia().inserir(ordemS)) {
 								JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+
+								dataEntrada.setToolTipText("");
+								dataSaida.setToolTipText("");
+								txtColaborador.setText("");
+								comboBoxStatus.setSelectedIndex(0);
 								txtCPF.setText("");
 								lblResultNome.setText("[Nome do cliente]");
 								lblResultEndereco.setText("[Endereco do cliente]");
 								lbleResultEmailDoCliente.setText("[Email do cliente]");
+								lblColaborador.setText("[Matricula]");
 								cliente = null;
+								
+								txtCodPeca.setText("");
+								txtTipoServico.setText("");
+								txtAreaServico.setText("");
+								txtValorServico.setText("");
+								txtValorTotal.setText("");
+								txtAdiantamento.setText("");
+								
+								String id= ControladorOrdemServico.getInstancia().gerarID()+"";
+								lblCodOS.setText(id);
+								
 
 							}
 						}
 
-//						if ( ControladorOrdemServico.getInstancia().inserir(ordemS)) {
-//							JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-//							txtCPF.setText("");
-//							txtNomeCliente.setText("");
-//							txtEnderecoCliente.setText("");
-//							txtEmailCliente.setText("");
-//							cliente=null;
-//							
-//						}
 					}
+					
 				});
 				btnSalva.setActionCommand("OK");
 				buttonPane.add(btnSalva);
 				getRootPane().setDefaultButton(btnSalva);
 			}
+			
+			
+			
 			{
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.addActionListener(new ActionListener() {
@@ -326,12 +370,4 @@ public class TelaOS extends JDialog {
 			}
 		}
 	}
-
-//	public Cliente getCliente() {
-//		return cliente;
-//	}
-//
-//	public void setCliente(Cliente cliente) {
-//		this.cliente = cliente;
-//	}
 }
