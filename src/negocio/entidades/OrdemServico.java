@@ -17,6 +17,12 @@ public class OrdemServico {
 	private Servico servico;
 
 	private List<Peca> pecas = new ArrayList<Peca>();
+	
+	
+
+	public OrdemServico() {
+		super();
+	}
 
 	public OrdemServico(Date dataEntrada, Date dataSaida, Integer numOS, StatusServico statusServico,
 			Colaborador colaborador, Cliente cliente, Servico servico) {

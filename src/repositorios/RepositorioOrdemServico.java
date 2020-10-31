@@ -19,7 +19,8 @@ public class RepositorioOrdemServico {
 		}
 		return null;
 	}
-	
+
+	//Gerar id da OS automatico a cada nova OS
 	public int gerarIdOS() {
 		int id = 1;
 		if(localizarTodos().size() > 0) {

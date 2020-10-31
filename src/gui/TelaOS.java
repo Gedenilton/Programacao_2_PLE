@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
@@ -19,7 +20,10 @@ import javax.swing.border.EmptyBorder;
 import com.toedter.calendar.JDateChooser;
 
 import negocio.ControladorCliente;
+import negocio.ControladorOrdemServico;
 import negocio.entidades.Cliente;
+import negocio.entidades.Colaborador;
+import negocio.entidades.OrdemServico;
 import negocio.entidades.enums.StatusServico;
 
 public class TelaOS extends JDialog {
@@ -36,6 +40,11 @@ public class TelaOS extends JDialog {
 	private JTextField txtValorTotal;
 	private JTextField txtAdiantamento;
 	private JTextField txtCPF;
+	
+	private static Cliente cliente;
+	
+	JDateChooser dataEntrada;
+	JDateChooser dataSaida;
 
 	/**
 	 * Launch the application.
@@ -113,13 +122,13 @@ public class TelaOS extends JDialog {
 		lblStatus.setBounds(409, 42, 70, 14);
 		panel.add(lblStatus);
 		
-		JDateChooser dateChooserEntrada = new JDateChooser();
-		dateChooserEntrada.setBounds(162, 36, 166, 20);
-		panel.add(dateChooserEntrada);
+		dataEntrada = new JDateChooser();
+		dataEntrada.setBounds(162, 36, 166, 20);
+		panel.add(dataEntrada);
 		
-		JDateChooser dateChooserSaida = new JDateChooser();
-		dateChooserSaida.setBounds(162, 70, 166, 20);
-		panel.add(dateChooserSaida);
+		dataSaida = new JDateChooser();
+		dataSaida.setBounds(162, 70, 166, 20);
+		panel.add(dataSaida);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(0, 92, 713, 20);
@@ -175,14 +184,16 @@ public class TelaOS extends JDialog {
 		btnBuscarCpf.setBounds(337, 182, 118, 23);
 		contentPanel.add(btnBuscarCpf);
 		
+		//Buscar o CPF e preencher os campos com dados do cliente
 		btnBuscarCpf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 
-				Cliente cliente = ControladorCliente.getInstancia().localizar(txtCPF.getText());
+				cliente = ControladorCliente.getInstancia().localizar(txtCPF.getText());
 				txtEnderecoCliente.setText(cliente.getEndereco());
 				txtEmailCliente.setText(cliente.getEmail());
 				txtNomeCliente.setText(cliente.getNome());
+				
 			
 				}
 				
@@ -199,6 +210,8 @@ public class TelaOS extends JDialog {
 		txtCodPeca.setBounds(162, 343, 166, 20);
 		getContentPane().add(txtCodPeca);
 		
+		
+		
 		JLabel lblTipoServico = new JLabel("Tipo de servi\u00E7o:");
 		lblTipoServico.setBounds(20, 377, 132, 14);
 		getContentPane().add(lblTipoServico);
@@ -212,10 +225,10 @@ public class TelaOS extends JDialog {
 		lblDescricao.setBounds(20, 405, 132, 14);
 		getContentPane().add(lblDescricao);
 		
-		JTextArea txtArea = new JTextArea();
-		txtArea.setWrapStyleWord(true);
-		txtArea.setBounds(162, 408, 346, 100);
-		getContentPane().add(txtArea);
+		JTextArea txtAreaServico = new JTextArea();
+		txtAreaServico.setWrapStyleWord(true);
+		txtAreaServico.setBounds(162, 408, 346, 100);
+		getContentPane().add(txtAreaServico);
 		
 		JSeparator separator_1_1 = new JSeparator();
 		separator_1_1.setBounds(0, 550, 713, 20);
@@ -247,10 +260,6 @@ public class TelaOS extends JDialog {
 		JLabel lblAdiantamento = new JLabel("Adiantamento:");
 		lblAdiantamento.setBounds(20, 612, 102, 14);
 		getContentPane().add(lblAdiantamento);
-		
-		
-		
-		
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBounds(0, 657, 713, 33);
@@ -259,9 +268,36 @@ public class TelaOS extends JDialog {
 			{
 				JButton btnSalva = new JButton("Salvar");
 				btnSalva.addActionListener(new ActionListener() {
+					//Salvar no RepositorioOrdemServico
 					public void actionPerformed(ActionEvent e) {
 						
 						
+						if(cliente == null || txtAreaServico.getText() == null || 
+								"".equals(txtAreaServico.getText())) {//arrumar
+							JOptionPane.showMessageDialog(null, "Prencha todos os campos");
+						}
+						
+						Colaborador colaborador = new Colaborador();
+						colaborador.setMatricula(txtEmailCliente.getText());//arrrumar
+						
+						OrdemServico ordemS = new OrdemServico();
+						ordemS.setCliente(cliente);
+						ordemS.setColaborador(colaborador);
+						ordemS.setDataEntrada(dataEntrada.getDate());
+						ordemS.setDataEntrada(dataSaida.getDate());
+						
+					
+						
+						
+						if ( ControladorOrdemServico.getInstancia().inserir(ordemS)) {
+							JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+							txtCPF.setText("");
+							txtNomeCliente.setText("");
+							txtEnderecoCliente.setText("");
+							txtEmailCliente.setText("");
+							cliente=null;
+							
+						}
 					}
 				});
 				btnSalva.setActionCommand("OK");
@@ -281,4 +317,13 @@ public class TelaOS extends JDialog {
 			}
 		}
 	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
 }
