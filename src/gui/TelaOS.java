@@ -42,6 +42,7 @@ public class TelaOS extends JDialog {
 
 	private static Cliente cliente;
 	public static Colaborador colaborador;
+	
 
 	JDateChooser dataEntrada;
 	JDateChooser dataSaida;
@@ -100,10 +101,9 @@ public class TelaOS extends JDialog {
 		txtColaborador.setColumns(10);
 		txtColaborador.setBounds(447, 5, 166, 20);
 		panel.add(txtColaborador);
+		txtColaborador.setText("Digite o CPF");
 
-		/*
-		 * Combobox Status
-		 */
+		//Combobox Status
 		JComboBox comboBoxStatus = new JComboBox();
 		comboBoxStatus.setBounds(447, 59, 166, 22);
 		panel.add(comboBoxStatus);
@@ -125,26 +125,13 @@ public class TelaOS extends JDialog {
 		separator.setBounds(0, 92, 713, 20);
 		panel.add(separator);
 		
+		JLabel lblResultMatricula = new JLabel("[Matricula]");
+		lblResultMatricula.setBounds(447, 34, 166, 14);
+		panel.add(lblResultMatricula);
 		
-		//pegando a matricula do colaborador no repositorio
-		JButton btnBuscarColaborador = new JButton("Buscar");
-		btnBuscarColaborador.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				colaborador = ControladorColaborador.getInstancia().localizar(txtColaborador.getText());
-				lblColaborador.setText(colaborador.getMatricula());
-			}
-		});
-		btnBuscarColaborador.setActionCommand("OK");
-		btnBuscarColaborador.setBounds(623, 4, 79, 23);
-		panel.add(btnBuscarColaborador);
-		
-		JLabel lblmatricula = new JLabel("[Matricula]");
-		lblmatricula.setBounds(447, 34, 166, 14);
-		panel.add(lblmatricula);
-		
-		JLabel lblMatricula_1 = new JLabel("Matricula:");
-		lblMatricula_1.setBounds(368, 34, 70, 14);
-		panel.add(lblMatricula_1);
+		JLabel lblMatricula = new JLabel("Matricula:");
+		lblMatricula.setBounds(368, 34, 70, 14);
+		panel.add(lblMatricula);
 		
 		lblcodOrdemServico = new JLabel("Cod. Ordem de Servico:");
 		lblcodOrdemServico.setBounds(20, 8, 135, 14);
@@ -186,16 +173,29 @@ public class TelaOS extends JDialog {
 		contentPanel.add(btnBuscarCpf);
 
 		JLabel lblResultNome = new JLabel("[Nome do cliente]");
-		lblResultNome.setBounds(161, 220, 166, 14);
+		lblResultNome.setBounds(161, 220, 295, 14);
 		contentPanel.add(lblResultNome);
 
 		JLabel lblResultEndereco = new JLabel("[Endereco do cliente]");
-		lblResultEndereco.setBounds(161, 251, 166, 14);
+		lblResultEndereco.setBounds(161, 251, 295, 14);
 		contentPanel.add(lblResultEndereco);
 
 		JLabel lbleResultEmailDoCliente = new JLabel("[Email do cliente]");
-		lbleResultEmailDoCliente.setBounds(161, 285, 166, 14);
+		lbleResultEmailDoCliente.setBounds(161, 285, 295, 14);
 		contentPanel.add(lbleResultEmailDoCliente);
+		
+		//pegando a matricula do colaborador no repositorio
+				JButton btnBuscarColaborador = new JButton("Buscar");
+				btnBuscarColaborador.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						colaborador = ControladorColaborador.getInstancia().localizar(txtColaborador.getText());
+						lblResultMatricula.setText(colaborador.getMatricula());
+					}
+				});
+				btnBuscarColaborador.setActionCommand("OK");
+				btnBuscarColaborador.setBounds(623, 4, 79, 23);
+				panel.add(btnBuscarColaborador);
+		
 
 		// Buscar o CPF e preencher os campos com dados do cliente
 		btnBuscarCpf.addActionListener(new ActionListener() {
@@ -322,15 +322,15 @@ public class TelaOS extends JDialog {
 							if (ControladorOrdemServico.getInstancia().inserir(ordemS)) {
 								JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
 
-								dataEntrada.setToolTipText("");
-								dataSaida.setToolTipText("");
+								dataEntrada.setDate(null);
+								dataSaida.setDate(null);
 								txtColaborador.setText("");
 								comboBoxStatus.setSelectedIndex(0);
 								txtCPF.setText("");
 								lblResultNome.setText("[Nome do cliente]");
 								lblResultEndereco.setText("[Endereco do cliente]");
 								lbleResultEmailDoCliente.setText("[Email do cliente]");
-								lblColaborador.setText("[Matricula]");
+								lblResultMatricula.setText("[Matricula]");
 								cliente = null;
 								
 								txtCodPeca.setText("");

@@ -73,7 +73,7 @@ public class TelaDeLoginPrincipal {
 		passwordLogin.setBounds(132, 168, 158, 20);
 		frame.getContentPane().add(passwordLogin);
 		
-		JLabel lblCPF = new JLabel("Insira o CPF:");
+		JLabel lblCPF = new JLabel("Usuario:");
 		lblCPF.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCPF.setBounds(132, 81, 106, 20);
 		frame.getContentPane().add(lblCPF);

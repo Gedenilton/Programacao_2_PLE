@@ -245,7 +245,11 @@ public class CadastroCliente extends JDialog {
 				if ( ControladorCliente.getInstancia().inserir(cliente) ) {
 					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
 					txtNome.setText("");
+					txtCPF.setText("");
 					txtRG.setText("");
+					txtTelefone.setText("");
+					txtEndereco.setText("");
+					txtEmail.setText("");
 					
 				}
 				
