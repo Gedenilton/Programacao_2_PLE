@@ -11,7 +11,7 @@ public class OrdemServico {
 	private Date dataEntrada;
 	private Date dataSaida;
 	private Integer numOS;
-	private StatusServico statusServico;
+	private int statusServico;
 	private Colaborador colaborador;
 	private Cliente cliente;
 	private Servico servico;
@@ -24,7 +24,7 @@ public class OrdemServico {
 		super();
 	}
 
-	public OrdemServico(Date dataEntrada, Date dataSaida, Integer numOS, StatusServico statusServico,
+	public OrdemServico(Date dataEntrada, Date dataSaida, Integer numOS, int statusServico,
 			Colaborador colaborador, Cliente cliente, Servico servico) {
 		super();
 		this.dataEntrada = dataEntrada;
@@ -60,11 +60,11 @@ public class OrdemServico {
 		this.numOS = numOS;
 	}
 
-	public StatusServico getStatusServico() {
+	public int getStatusServico() {
 		return statusServico;
 	}
 
-	public void setStatusServico(StatusServico statusServico) {
+	public void setStatusServico(int statusServico) {
 		this.statusServico = statusServico;
 	}
 
@@ -100,5 +100,10 @@ public class OrdemServico {
 	}
 	public void setListPecas(List<Peca> list) {
 		pecas.addAll(list);
+	}
+
+	public void setMatricula(String text) {
+		// TODO Aretur
+		
 	}
 }

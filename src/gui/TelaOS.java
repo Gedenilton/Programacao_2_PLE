@@ -266,13 +266,16 @@ public class TelaOS extends JDialog {
 						OrdemServico ordemServico = new OrdemServico();
 						//ordemServico.setStatusServico(comboBoxStatus.getItemListeners();
 						OrdemServico status = new OrdemServico();
-						//status.setStatusServico(comboBoxStatus.getText());
+						status.setStatusServico(comboBoxStatus.getSelectedIndex());
+						
 
 						OrdemServico ordemS = new OrdemServico();
 						ordemS.setCliente(cliente);
 						ordemS.setColaborador(colaborador);
 						ordemS.setDataEntrada(dataEntrada.getDate());
 						ordemS.setDataEntrada(dataSaida.getDate());
+						ordemS.setMatricula(txtColaborador.getText());
+						
 
 						// Verifica se os campos existe vazio, se existir emite um alerta
 						if (cliente == null || dataEntrada.getDate() == null || dataSaida.getDate() == null
