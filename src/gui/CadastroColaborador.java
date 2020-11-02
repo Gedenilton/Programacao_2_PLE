@@ -52,7 +52,7 @@ public class CadastroColaborador extends JDialog {
 	 * Create the dialog.
 	 */
 	public CadastroColaborador() {
-		setModal(true);
+		setResizable(false);
 		setBounds(100, 100, 729, 392);
 		getContentPane().setLayout(null);
 		contentPanel.setBounds(0, 0, 713, 320);

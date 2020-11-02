@@ -67,6 +67,9 @@ public class Principal {
 		btnEmitirOS.setForeground(Color.BLACK);
 		btnEmitirOS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				TelaOS os = new TelaOS();
+				os.setVisible(true);
+				
 			}
 		});
 		btnEmitirOS.setBackground(Color.RED);
